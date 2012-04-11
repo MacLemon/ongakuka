@@ -21,14 +21,14 @@ Replace the hostname and filename, etc. accordingly.
 
 Host nickname must be Ongakuka (capital O).
 
-`host Ongakuka
-    hostname ongakuka.example.com
-    Compression yes
-    IdentityFile ~/.ssh/id_rsa_ongakuka
-# if needed
-#    User ongakuka
-#    Port 10022
-#    VisualHostKey no`
+   `   host Ongakuka
+       hostname ongakuka.example.com
+       Compression yes
+       IdentityFile ~/.ssh/id_rsa_ongakuka
+   # if needed
+   #    User ongakuka
+   #    Port 10022
+   #    VisualHostKey no`
 
 Put ongakuka or an alias to it somewhere in your `$PATH`.
 
