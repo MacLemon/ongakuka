@@ -18,9 +18,11 @@ Ability to tunnel ports with SSH. You do not need to be able to spawn a shell.
 ## Setup
 Setup a host configuration in your ~/.ssh/config like this
 Replace the hostname and filename, etc. accordingly.
+
+Host nickname must be Ongakuka (capital O).
+
 `
 host Ongakuka
-# host nickname must be Ongakuka (capital O)
     hostname ongakuka.example.com
     Compression yes
     IdentityFile ~/.ssh/id_rsa_ongakuka
