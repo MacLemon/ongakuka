@@ -9,7 +9,7 @@ See LICENSE
 
 
 ## Prerequisites
-A working `mt-daapd` server and `ssh` access to the network that server resides on. An installation via MacPorts[2] is just fine.
+A working `mt-daapd` server running on port 13689 and `ssh` access to the network that server resides on. An installation via MacPorts[2] is just fine.
 Working SSH account with non-interactive key authentication. There are tons of tutorials available on the interwebs on how to set this up correctly.
 Ability to tunnel ports with SSH. You do not need to be able to spawn a shell.
 
