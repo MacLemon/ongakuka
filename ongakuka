@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# ongakuka
+# License: Two Clause BSD
+
+# By Pepi Zawodsky
+# aka @MacLemon
+
+highestAvailabelPort=65535
+lowestAvailablePort=1025;
+daapPort=13689
+localMusicPort=$[ ( $RANDOM % ( $[ $highestAvailabelPort - $lowestAvailablePort ] + 1 ) ) + $lowestAvailablePort ]
+
+echo localMusicPort=$localMusicPort
+
+# -N Do not execute a remote command.  This is useful for just forwarding ports (protocol version 2 only).
+# -g Allows remote hosts to connect to local forwarded ports.
+sshOptions="-N -g"
+
+
+# connection to use if none is specified
+sshNickname="Ongakuka"
+
+
+ssh -L $localMusicPort:127.0.0.1:$daapPort $sshOptions $sshNickname &
+sshTunnelPID=$!
+echo sshTunnelPID=$sshTunnelPID
+sleep 5
+
+# Announcing the Tunneled Music Share via Bonjour
+mDNS -R "Ongakuka" _daap._tcp. . $localMusicPort &
+mDNSPID=$!
+
+sleep 5
+
+echo "Ongakuka Music Tunnel established. Happy listening!"
+read -n1 -p "Press any key to shut down the tunnel." anykey
+unset anykey
+
+# Cleaning up
+# echo Unannouncing Bonjour
+kill $mDNSPID
+sleep 3
+
+# echo Closing SSH Tunnel
+kill $sshTunnelPID
+
+#EOF
