@@ -9,30 +9,28 @@ See LICENSE
 
 
 ## Prerequisites
-A working mt-daapd server and ssh access to the network that server resides on. An installation via MacPorts[2] is just fine.
+A working `mt-daapd` server and `ssh` access to the network that server resides on. An installation via MacPorts[2] is just fine.
 Working SSH account with non-interactive key authentication. There are tons of tutorials available on the interwebs on how to set this up correctly.
 Ability to tunnel ports with SSH. You do not need to be able to spawn a shell.
 
 
 
 ## Setup
-Setup a host configuration in your ~/.ssh/config like this
+Setup a host configuration in your `~/.ssh/config` like this
 Replace the hostname and filename, etc. accordingly.
 
 Host nickname must be Ongakuka (capital O).
 
-`
-host Ongakuka
+`host Ongakuka
     hostname ongakuka.example.com
     Compression yes
     IdentityFile ~/.ssh/id_rsa_ongakuka
 # if needed
 #    User ongakuka
 #    Port 10022
-#    VisualHostKey no
-`
+#    VisualHostKey no`
 
-Put ongakuka or an alias to it somewhere in your $PATH.
+Put ongakuka or an alias to it somewhere in your `$PATH`.
 
 To establish your tunnel simply run ongakuka from a Shell.
 Once the tunnel has been established you should see a shared Music source in iTunes named "Ongakuka".
