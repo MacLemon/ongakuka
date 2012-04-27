@@ -10,6 +10,7 @@ highestAvailabelPort=65535
 lowestAvailablePort=1025;
 daapPort=13689
 localMusicPort=$[ ( $RANDOM % ( $[ $highestAvailabelPort - $lowestAvailablePort ] + 1 ) ) + $lowestAvailablePort ]
+hostname=$(hostname -s)
 
 echo localMusicPort=$localMusicPort
 
@@ -28,7 +29,7 @@ echo sshTunnelPID=$sshTunnelPID
 sleep 5
 
 # Announcing the Tunneled Music Share via Bonjour
-mDNS -R "$sshNickname" _daap._tcp. . $localMusicPort &
+mDNS -R "$sshNickname $hostname" _daap._tcp. . $localMusicPort &
 mDNSPID=$!
 
 sleep 5
