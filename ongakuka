@@ -29,7 +29,17 @@ echo sshTunnelPID=$sshTunnelPID
 sleep 5
 
 # Announcing the Tunneled Music Share via Bonjour
-mDNS -R "$sshNickname $hostname" _daap._tcp. . $localMusicPort &
+
+if [ -e "/usr/bin/dns-sd" ]
+then
+    mDNSbinary=/usr/bin/dns-sd
+elif [ -e "/usr/bin/mDNS" ]
+then
+   mDNSbinary=/usr/bin/mDNS
+fi
+
+$mDNSbinary -R "$sshNickname $hostname" _daap._tcp. . $localMusicPort &
+
 mDNSPID=$!
 
 sleep 5
