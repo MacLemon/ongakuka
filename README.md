@@ -42,6 +42,8 @@ Use it like any other shared iTunes library. Expect your initial loading time to
 Enjoy your music.
 Once you're done, press any key to shut the tunnel down.
 
+If we cannot find a binary to Bonjour announce the Tunnel we exit 127.
+
 ## Caveat
 You can not use this to connect to a shared iTunes instance. iTunes prevents routing of daap packets by setting their TTL to 1.
 
