@@ -10,7 +10,7 @@ highestAvailabelPort=65535
 lowestAvailablePort=1025;
 daapPort=13689
 localMusicPort=$[ ( $RANDOM % ( $[ $highestAvailabelPort - $lowestAvailablePort ] + 1 ) ) + $lowestAvailablePort ]
-hostname=$(hostname -s)
+myhostname=$(hostname -s)
 
 echo localMusicPort=$localMusicPort
 
@@ -36,10 +36,12 @@ then
 elif [ -e "/usr/bin/mDNS" ]
 then
    mDNSbinary=/usr/bin/mDNS
+else
+    echo "$0: Fatal: Neither /usr/bin/dns-sd nor /usr/bin/mDNS could be found for Bonjour announcement." >&2
+    exit 127
 fi
 
-$mDNSbinary -R "$sshNickname $hostname" _daap._tcp. . $localMusicPort &
-
+$mDNSbinary -R "$sshNickname $myhostname" _daap._tcp. . $localMusicPort &
 mDNSPID=$!
 
 sleep 5
