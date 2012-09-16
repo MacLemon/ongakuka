@@ -17,7 +17,7 @@ Ability to tunnel ports with SSH. You do not need to be able to spawn a shell.
 
 ## Setup
 Setup a host configuration in your `~/.ssh/config` like this
-Replace the hostname and filename, etc. accordingly.
+Replace the hostname and identity key filename, etc. accordingly.
 
 Host nickname must be Ongakuka (capital O).
 
@@ -26,12 +26,15 @@ Host nickname must be Ongakuka (capital O).
         Compression yes
         IdentityFile ~/.ssh/id_rsa_ongakuka
 
+Other recommended options
+        TCPKeepAlive no
+        ServerAliveInterval 60
+        ServerAliveCountMax 10
+        VisualHostKey no
 
 If needed also add these ssh opions or any others you need.
-
         User ongakuka
         Port 10022
-        VisualHostKey no
 
 
 Put ongakuka or an alias to it somewhere in your `$PATH`.
