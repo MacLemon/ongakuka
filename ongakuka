@@ -10,7 +10,7 @@ highestAvailabelPort=65535
 lowestAvailablePort=1025;
 daapPort=13689
 localMusicPort=$[ ( $RANDOM % ( $[ $highestAvailabelPort - $lowestAvailablePort ] + 1 ) ) + $lowestAvailablePort ]
-myhostname=$(hostname -s)
+myhostname=$(hostname)
 
 echo localMusicPort=$localMusicPort
 
