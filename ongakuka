@@ -12,9 +12,9 @@ daapPort=13689
 localMusicPort=$[ ( $RANDOM % ( $[ $highestAvailabelPort - $lowestAvailablePort ] + 1 ) ) + $lowestAvailablePort ]
 
 if [ $OSTYPE = "cygwin" ];
-then
+then # Cygwin on Windows
     myhostname=$(hostname)
-else
+else # Darwin or other *nix
     myhostname=$(hostname -s)
 fi
 
@@ -38,16 +38,19 @@ sleep 5
 
 if [ -e "/usr/bin/dns-sd" ]
 then
+    # Standard path to dns-sd on darwin < 12 (before OS X 10.8)
     mDNSbinary=/usr/bin/dns-sd
 elif [ -e "/usr/bin/mDNS" ]
 then
+    # Standard path to mDNS on darwin >= 12 (10.8 and higher)
    mDNSbinary=/usr/bin/mDNS
 elif [ -e "/cygdrive/c/Windows/system32/dns-sd" ]
 then
+        # Standard path to CygWIN on Windows
         mDNSbinary=/cygdrive/c/Windows/system32/dns-sd
 else
-    echo "$0: Fatal: Neither /usr/bin/dns-sd nor /usr/bin/mDNS could be found for Bonjour announcement." >&2
-    exit 127
+    echo "$0: Fatal: Neither /usr/bin/dns-sd nor /usr/bin/mDNSi nor /cygdrive/c/Windows/system32/dns-sd could be found for Bonjour announcement." >&2
+    exit 127 # Couldn't find a known binary to announce mDSN.
 fi
 
 $mDNSbinary -R "$sshNickname $myhostname" _daap._tcp. . $localMusicPort &
