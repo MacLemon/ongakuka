@@ -10,7 +10,13 @@ highestAvailabelPort=65535
 lowestAvailablePort=1025;
 daapPort=13689
 localMusicPort=$[ ( $RANDOM % ( $[ $highestAvailabelPort - $lowestAvailablePort ] + 1 ) ) + $lowestAvailablePort ]
-myhostname=$(hostname)
+
+if [ $OSTYPE = "cygwin" ];
+then
+    myhostname=$(hostname)
+else
+    myhostname=$(hostname -s)
+fi
 
 echo localMusicPort=$localMusicPort
 
