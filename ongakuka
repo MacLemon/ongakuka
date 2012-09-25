@@ -10,7 +10,13 @@ highestAvailabelPort=65535
 lowestAvailablePort=1025;
 daapPort=13689
 localMusicPort=$[ ( $RANDOM % ( $[ $highestAvailabelPort - $lowestAvailablePort ] + 1 ) ) + $lowestAvailablePort ]
-myhostname=$(hostname -s)
+
+if [ $OSTYPE = "cygwin" ];
+then
+    myhostname=$(hostname)
+else
+    myhostname=$(hostname -s)
+fi
 
 echo localMusicPort=$localMusicPort
 
@@ -36,6 +42,9 @@ then
 elif [ -e "/usr/bin/mDNS" ]
 then
    mDNSbinary=/usr/bin/mDNS
+elif [ -e "/cygdrive/c/Windows/system32/dns-sd" ]
+then
+        mDNSbinary=/cygdrive/c/Windows/system32/dns-sd
 else
     echo "$0: Fatal: Neither /usr/bin/dns-sd nor /usr/bin/mDNS could be found for Bonjour announcement." >&2
     exit 127
