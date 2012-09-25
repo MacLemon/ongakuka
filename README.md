@@ -60,9 +60,9 @@ Thanks to these people who have contributed to Ongakuka
 
 
 ## Links
-[0]:https://twitter.com/MacLemon "@MacLemon" Author of ongakuka
+[0]:https://twitter.com/MacLemon "@MacLemon"
 [1]:http://sourceforge.net/projects/mt-daapd/ "mt-daapd"
 [2]:http://macports.org/ "MacPorts"
 [3]:https://github.com/juzam "Juzam on Gihub"
 [4]:http://www.cygwin.com/ "Cygwin"
-[5]:https://github.com/MacLemon "MacLemon" on Github
+[5]:https://github.com/MacLemon "MacLemon"
