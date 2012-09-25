@@ -36,6 +36,9 @@ then
 elif [ -e "/usr/bin/mDNS" ]
 then
    mDNSbinary=/usr/bin/mDNS
+elif [ -e "/cygdrive/c/Windows/system32/dns-sd" ]
+then
+        mDNSbinary=/cygdrive/c/Windows/system32/dns-sd
 else
     echo "$0: Fatal: Neither /usr/bin/dns-sd nor /usr/bin/mDNS could be found for Bonjour announcement." >&2
     exit 127
