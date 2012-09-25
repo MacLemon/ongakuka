@@ -7,6 +7,8 @@ A simple ssh tunnel setup script to ssh tunnel an iTunes connection to a remote 
 Simplified BSD license (aka Two-clause BSD)
 See LICENSE
 
+Created by MacLemon who can be reached [on Twitter][0] and [on Github][5].
+
 
 ## Prerequisites
 A working `mt-daapd` server running on port 13689 and `ssh` access to the network that server resides on. An installation via MacPorts[2] is just fine.
@@ -45,13 +47,22 @@ Use it like any other shared iTunes library. Expect your initial loading time to
 Enjoy your music.
 Once you're done, press any key to shut the tunnel down.
 
-If we cannot find a binary to Bonjour announce the Tunnel we exit 127.
+If we cannot find a binary to Bonjour announce the tunnel we exit 127.
 
 ## Caveat
 You can not use this to connect to a shared iTunes instance. iTunes prevents routing of daap packets by setting their TTL to 1.
+
+
+## Thanks
+Thanks to these people who have contributed to Ongakuka
+
+[Juzam][3]: Added compatibility with [Cygwin][4]
 
 
 ## Links
 [0]:https://twitter.com/MacLemon "@MacLemon" Author of ongakuka
 [1]:http://sourceforge.net/projects/mt-daapd/ "mt-daapd"
 [2]:http://macports.org/ "MacPorts"
+[3]:https://github.com/juzam "Juzam on Gihub"
+[4]:http://www.cygwin.com/ "Cygwin"
+[5]:https://github.com/MacLemon "MacLemon" on Github
