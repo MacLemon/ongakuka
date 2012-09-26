@@ -49,7 +49,7 @@ then
         # Standard path to CygWIN on Windows
         mDNSbinary=/cygdrive/c/Windows/system32/dns-sd
 else
-    echo "$0: Fatal: Neither /usr/bin/dns-sd nor /usr/bin/mDNSi nor /cygdrive/c/Windows/system32/dns-sd could be found for Bonjour announcement." >&2
+    echo "$0: Fatal: Neither /usr/bin/dns-sd nor /usr/bin/mDNS nor /cygdrive/c/Windows/system32/dns-sd could be found for Bonjour announcement." >&2
     exit 127 # Couldn't find a known binary to announce mDSN.
 fi
 
