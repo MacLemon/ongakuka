@@ -13,29 +13,25 @@ daapPort=13689
 # connection to use if none is specified
 sshNickname="Ongakuka"
 
-# Checking if we got a different connection to use other than the default Ongakuka we use by default.
-# Did we get a parameter as a connection to use
-if [ -z "$1" ]
-then
-
-    if [ "$1" == "Ongakuka" ]
-    then
-        sshNickname="$1" ; # Overriding SSH nickname
-        myhostname="$1"
-    else
-        echo "No need to sepcify \"$1\" as this is the default we would use anyway."
-
-        if [ $OSTYPE = "cygwin" ];
-        then # Cygwin on Windows
-            myhostname=$(hostname)
-        else # Darwin or other *nix
-            myhostname=$(hostname -s)
-        fi
-    fi
+if [ $OSTYPE = "cygwin" ];
+then # Cygwin on Windows
+    myhostname=$(hostname)
+else # Darwin or other *nix
+    myhostname=$(hostname -s)
 fi
 
-
-
+# Checking if we got a different connection to use other than the default Ongakuka we use by default.
+# Did we get a parameter as a connection to use
+if [ ! -z "$1" ]
+then
+    if [ "$1" == "Ongakuka" ]
+    then
+        echo "INFO: No need to specify \"$1\" as this is the default we would use anyway." >&2
+        # still using defaults, everything is fine
+    else
+        sshNickname="$1" ; # Overriding SSH nickname
+    fi
+fi
 
 localMusicPort=$[ ( $RANDOM % ( $[ $highestAvailabelPort - $lowestAvailablePort ] + 1 ) ) + $lowestAvailablePort ]
 
