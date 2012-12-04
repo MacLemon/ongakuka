@@ -21,7 +21,7 @@ Ability to tunnel ports with SSH. You do not need to be able to spawn a shell.
 Setup a host configuration in your `~/.ssh/config` like this
 Replace the hostname and identity key filename, etc. accordingly.
 
-Host nickname must be Ongakuka (capital O).
+Host nickname must be Ongakuka (capital letter O).
 
     host Ongakuka
         hostname ongakuka.example.com
@@ -41,7 +41,7 @@ If needed also add these ssh opions or any others you need.
 
 Put ongakuka or an alias to it somewhere in your `$PATH`.
 
-To establish your tunnel simply run ongakuka from a Shell.
+To establish your tunnel simply run ongakuka from a Shell. If you want to use a different ssh connection nickname than Ongakuka you can simply pass it as a parameter and that one will be used instead.
 Once the tunnel has been established you should see a shared Music source in iTunes named "Ongakuka".
 Use it like any other shared iTunes library. Expect your initial loading time to be longer than on the LAN.
 Enjoy your music.
